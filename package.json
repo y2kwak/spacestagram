@@ -1,6 +1,6 @@
 {
-  "homepage": "http://y2kwak.github.io/spacestagram/",
   "name": "spacestagram",
+  "homepage": "http://y2kwak.github.io/spacestagram/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
