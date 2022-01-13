@@ -1,0 +1,29 @@
+.center {
+  justify-content: center;
+  vertical-align: middle;
+}
+  
+.flex {
+  display: flex;
+}
+
+.header {
+  margin: 36px 0;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.datePicker {
+  display: inline-flex;
+  align-items: center;
+}
+
+.datePickerBtn{
+  margin-left: 8px;
+}
+
+.todayHeader {
+  margin: 16px 0;
+}
