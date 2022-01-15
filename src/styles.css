@@ -1,3 +1,11 @@
 .mt-m {
-  margin-top: 16px;
+  margin-top: 1rem;
+}
+
+.ml-m {
+  margin-left: 1rem;
+}
+
+.align-center {
+  align-items: center;
 }

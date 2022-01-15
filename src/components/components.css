@@ -6,10 +6,6 @@ a {
   text-decoration: none;
 }
 
-.align-center {
-  align-items: center;
-}
-
 .media {
   width: 100%;
   min-height: 300px;

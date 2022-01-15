@@ -14,7 +14,7 @@ function App() {
  return (
     <AppProvider i18n={enTranslations}>
       <Frame>
-        <Router basename="/spacestagram">
+        <Router basename="/spacestagram" hashType="slash">
           <Route exact path="/">
             <Home/>
           </Route>
