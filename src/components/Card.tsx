@@ -20,7 +20,7 @@ const copySingleImgUrl = (date: string) => {
   if(window.location.pathname.includes("image")) {
     navigator.clipboard.writeText(window.location.href)
   } else {
-    navigator.clipboard.writeText(window.location.origin + `/image/${date}`)
+    navigator.clipboard.writeText(window.location.href + `image/${date}`)
   }
 }
 
@@ -37,59 +37,47 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
     setShowToast((showToast) => !showToast)
   }, []);
 
-  React.useEffect(() => {
-    if(localStorage.getItem(props.date)) setIsLiked(true)
-  }, [props.date, setIsLiked]);
-
   const linkCopiedToast = showToast ? (
     <Toast content="Link copied!" onDismiss={toggleActive} duration={4500} />
   ) : null
 
+  React.useEffect(() => {
+    if(localStorage.getItem(props.date)) setIsLiked(true)
+  }, [props.date, setIsLiked]);
+
   return (
-    false ? (
-      <MediaCard
+    <Card>
+      <Card.Header 
         title={moment(props.date).format("MMMM Do, YYYY") + ": " + props.title}
-        description="hello"
-        primaryAction={{
-          content: 'Like',
-          onAction: () => {}
-        }}
       >
-        
-      </MediaCard>
-    ) : (
-      <Card>
-        <Card.Header 
-          title={moment(props.date).format("MMMM Do, YYYY") + ": " + props.title}
+        <Button 
+          plain 
+          icon={LinkMinor}
+          onClick={() => {
+            toggleActive()
+            copySingleImgUrl(props.date)
+          }}
         >
-          <Button 
-            plain 
-            icon={LinkMinor}
-            onClick={() => {
-              toggleActive()
-              copySingleImgUrl(props.date)
-            }}
-          >
-            Share
-          </Button>
-          {linkCopiedToast}
-        </Card.Header>
-        <Card.Section>
-          {isImage(props.imageUrl) ? (
-            <img alt={props.title} width="100%" src={props.imageUrl}/>
-          ) : (
-            <iframe title={props.title} width="100%" height="315px" src={props.imageUrl}/>
-          )}
-          {props.isSingleCard && <div className="cardTextArea">
-            <TextContainer>
-              <p>{props.description}</p>
-              
-            </TextContainer>
-          </div>}
-          <div className="mt-m">
-          <Stack alignment="center">
-            <Stack.Item fill>
-              <ButtonGroup>
+          Share
+        </Button>
+        {linkCopiedToast}
+      </Card.Header>
+      <Card.Section>
+        {isImage(props.imageUrl) ? (
+          <img alt={props.title} width="100%" src={props.imageUrl}/>
+        ) : (
+          <iframe title={props.title} width="100%" height="315px" src={props.imageUrl}/>
+        )}
+        {props.isSingleCard && <div className="cardTextArea">
+          <TextContainer>
+            <p>{props.description}</p>
+            
+          </TextContainer>
+        </div>}
+        <div className="mt-m">
+        <Stack alignment="center">
+          <Stack.Item fill>
+            <ButtonGroup>
               <Button 
                 primary={!isLiked}
                 pressed={isLiked}
@@ -106,23 +94,21 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
                 {isLiked ? "Liked" : "Like"}
               </Button>
               {!props.isSingleCard && 
-                <Link to={`/image/${props.date}`}>
+                <Link to={`image/${props.date}`}>
                   <Button>
                     View more
                   </Button>
                 </Link>
               }
-              </ButtonGroup>
-            </Stack.Item>
-            {props.credit &&
-              <p>Photo &copy;	{props.credit}</p>
-            }
-          </Stack>
-          </div>
-
-        </Card.Section>
-      </Card>
-    ) 
+            </ButtonGroup>
+          </Stack.Item>
+          {props.credit &&
+            <p>&copy;	{props.credit}</p>
+          }
+        </Stack>
+        </div>
+      </Card.Section>
+    </Card>
   )
 }
 export default ImageCard;

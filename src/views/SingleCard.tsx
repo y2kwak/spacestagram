@@ -8,6 +8,7 @@ import ImageCard from '../components/Card';
 import { useAxiosGet } from '../hooks/useAxiosGet';
 
 import './views.css';
+import '../styles.css'
 
 type CardParams = {
   id: string
@@ -51,7 +52,7 @@ function SingleCard(){
   
   return (
     <Page>
-      <div className="header">
+      <div className="flex align-center header">
         <Button 
           icon={ChevronLeftMinor}
           onClick={() => window.history.back()}

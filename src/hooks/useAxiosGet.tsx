@@ -18,7 +18,7 @@ export function useAxiosGet(url: string){
     .then(response => {
         setRequest({
             loading:false,
-            data: response.data.length > 1 ? response.data.reverse() : response.data,
+            data: response.data,
             error: false,
         })
     })
