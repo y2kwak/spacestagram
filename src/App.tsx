@@ -20,7 +20,7 @@ function App() {
             <Route exact path="/spacestagram/">
               <Home/>
             </Route>
-            <Route path ="/spacestagram/image/:id">
+            <Route exact path ="/spacestagram/image/:id">
               <SingleCard/>
             </Route>
           </Switch>
