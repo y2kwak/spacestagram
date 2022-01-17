@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Button, ButtonGroup, Card, MediaCard, Stack, TextContainer, Toast } from '@shopify/polaris';
 import { ThumbsUpMajor, ThumbsUpMinor, LinkMinor } from '@shopify/polaris-icons';
 
@@ -17,7 +17,7 @@ type ImageCardProps = {
 };
 
 const copySingleImgUrl = (date: string) => {
-  if(window.location.pathname.includes("image")) {
+  if(window.location.pathname.includes(`/image/${date}`)) {
     navigator.clipboard.writeText(window.location.href)
   } else {
     navigator.clipboard.writeText(window.location.href + `image/${date}`)
@@ -30,6 +30,7 @@ const isImage = (imageUrl: string) => {
 }
 
 const ImageCard: React.FC<ImageCardProps> = (props) => {
+  let history = useHistory()
   const [isLiked, setIsLiked] = React.useState<boolean>(false)
   const [showToast, setShowToast] = React.useState<boolean>(false);
 
@@ -94,7 +95,7 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
                 {isLiked ? "Liked" : "Like"}
               </Button>
               {!props.isSingleCard && 
-                <Link to={`image/${props.date}`}>
+                <Link to={`/spacestagram/image/${props.date}`}>
                   <Button>
                     View more
                   </Button>

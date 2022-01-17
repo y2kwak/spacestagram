@@ -1,7 +1,8 @@
 import * as React from 'react';
 import {
-  HashRouter as Router,
-  Route
+  BrowserRouter as Router,
+  Route,
+  Switch
 } from 'react-router-dom';
 import enTranslations from '@shopify/polaris/locales/en.json';
 import { AppProvider, Frame } from '@shopify/polaris';
@@ -11,16 +12,18 @@ import SingleCard from './views/SingleCard';
 import './App.css';
 
 function App() {
- return (
+  return (
     <AppProvider i18n={enTranslations}>
       <Frame>
-        <Router basename="/spacestagram" hashType="slash">
-          <Route exact path="/">
-            <Home/>
-          </Route>
-          <Route path ="/image/:id">
-            <SingleCard/>
-          </Route>
+        <Router>
+          <Switch>
+            <Route exact path="/spacestagram/">
+              <Home/>
+            </Route>
+            <Route path ="/spacestagram/image/:id">
+              <SingleCard/>
+            </Route>
+          </Switch>
         </Router>
       </Frame>
     </AppProvider>

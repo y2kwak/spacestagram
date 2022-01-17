@@ -73,7 +73,7 @@ const Home = () => {
             onChange={(date: Date) => setDatePickerDate(date)}
             shouldCloseOnSelect={false}
           />
-          <Link to={`/image/${moment(datePickerDate).format("YYYY-MM-DD")}`}>
+          <Link to={`/spacestagram/image/${moment(datePickerDate).format("YYYY-MM-DD")}`}>
             <div className="datePickerBtn">
               <Button primary size="slim">Go!</Button>
             </div>
