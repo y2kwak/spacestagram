@@ -26,10 +26,11 @@ const copySingleImgUrl = (date: string) => {
 
 const isImage = (imageUrl: string) => {
   const imageExtensions = ["png", "jpg", "gif"]
-  return imageExtensions.find((ext) =>imageUrl.includes(ext))
+  return imageExtensions.find((extension) =>imageUrl.includes(extension))
 }
 
 const ImageCard: React.FC<ImageCardProps> = (props) => {
+  // States
   const [isLiked, setIsLiked] = React.useState<boolean>(false)
   const [showToast, setShowToast] = React.useState<boolean>(false);
 
@@ -37,13 +38,24 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
     setShowToast((showToast) => !showToast)
   }, []);
 
-  const linkCopiedToast = showToast ? (
-    <Toast content="Link copied!" onDismiss={toggleActive} duration={4500} />
-  ) : null
-
   React.useEffect(() => {
     if(localStorage.getItem(props.date)) setIsLiked(true)
   }, [props.date, setIsLiked]);
+  
+  const linkCopiedToast = showToast ? (
+    <Toast content="Link copied!" onDismiss={toggleActive} duration={4500} />
+  ) : null
+  
+  const likeIcon = isLiked ? ThumbsUpMajor : ThumbsUpMinor
+  const likeText = isLiked ? "Liked" : "Like"
+  const handleLike = () => {
+    setIsLiked(!isLiked)
+    !isLiked ? (
+      localStorage.setItem(String(props.date), "liked")
+    ) : (
+      localStorage.removeItem(String(props.date))
+    )
+  }
 
   return (
     <Card>
@@ -75,37 +87,28 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
           </TextContainer>
         </div>}
         <div className="mt-m">
-        <Stack alignment="center">
-          <Stack.Item fill>
-            <ButtonGroup>
-              <Button 
-                primary={!isLiked}
-                pressed={isLiked}
-                icon={isLiked? ThumbsUpMajor : ThumbsUpMinor} 
-                onClick={() => {
-                  setIsLiked(!isLiked)
-                  !isLiked ? (
-                    localStorage.setItem(String(props.date), "liked")
-                  ) : (
-                    localStorage.removeItem(String(props.date))
-                  )
-                }}
-              >
-                {isLiked ? "Liked" : "Like"}
-              </Button>
-              {!props.isSingleCard && 
-                <Link to={`/image/${props.date}`}>
-                  <Button>
-                    View more
-                  </Button>
-                </Link>
-              }
-            </ButtonGroup>
-          </Stack.Item>
-          {props.credit &&
-            <p>&copy;	{props.credit}</p>
-          }
-        </Stack>
+          <Stack alignment="center">
+            <Stack.Item fill>
+              <ButtonGroup>
+                <Button 
+                  primary={!isLiked}
+                  pressed={isLiked}
+                  icon={likeIcon} 
+                  onClick={() => handleLike()}
+                >
+                  {likeText}
+                </Button>
+                {!props.isSingleCard && 
+                  <Link to={`/image/${props.date}`}>
+                    <Button>
+                      View more
+                    </Button>
+                  </Link>
+                }
+              </ButtonGroup>
+            </Stack.Item>
+            {props.credit && <p>&copy;	{props.credit}</p>}
+          </Stack>
         </div>
       </Card.Section>
     </Card>

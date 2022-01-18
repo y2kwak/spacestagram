@@ -5,7 +5,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 import { Button, DisplayText } from '@shopify/polaris';
-import { ChevronLeftMinor } from '@shopify/polaris-icons';
+import { ChevronLeftMinor, HomeMajor } from '@shopify/polaris-icons';
 
 import logo from '../shopify-logo.svg';
 import './components.css';
@@ -31,9 +31,10 @@ const Header: React.FC<HeaderProps>= (props) => {
       ) : (
         <div>
           {window.history.length == 2 ? (
+            // Go to home if there's no history
             <Link to="/">
-              <Button icon={ChevronLeftMinor}>
-                Back
+              <Button icon={HomeMajor}>
+                Home
               </Button>
             </Link>
           ) : (

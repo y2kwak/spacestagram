@@ -25,6 +25,7 @@ const Home = () => {
     loadMoreImages();
   }, []);
 
+  // Fetch images
   function loadMoreImages() {
     setRequestStatus({
       loading: true,
@@ -39,23 +40,23 @@ const Home = () => {
         end_date: apiEndDate,
       },
     })
-      .then((res) => {
-        setImagesList((prevTitles) => {
-          return prevTitles.concat(res.data.reverse())
-        });
-        setRequestStatus({
-          loading: false,
-          error: false,
-        })
-        setApiEndDate((prevDate) => moment(prevDate).subtract(7, "d").format("YYYY-MM-DD"))
-        setApiStartDate((prevDate) => moment(prevDate).subtract(6, "d").format("YYYY-MM-DD"))
-      })
-      .catch((e) => {
-        setRequestStatus({
-          loading: false,
-          error: true,
-        })      
+    .then((res) => {
+      setImagesList((prevTitles) => {
+        return prevTitles.concat(res.data.reverse())
       });
+      setRequestStatus({
+        loading: false,
+        error: false,
+      })
+      setApiEndDate((prevDate) => moment(prevDate).subtract(7, "d").format("YYYY-MM-DD"))
+      setApiStartDate((prevDate) => moment(prevDate).subtract(6, "d").format("YYYY-MM-DD"))
+    })
+    .catch((e) => {
+      setRequestStatus({
+        loading: false,
+        error: true,
+      })      
+    });
   }
 
   if (requestStatus.error) {
@@ -65,6 +66,7 @@ const Home = () => {
       </div>
     )
   }
+  
   return (
     <div className="mb-xxl">
       <Header isHomeHeader={true}/>

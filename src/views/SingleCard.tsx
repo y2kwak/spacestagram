@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
-import { Page, Spinner } from '@shopify/polaris';
+import { Spinner } from '@shopify/polaris';
 
 import ImageCard from '../components/Card';
 import { useAxiosGet } from '../hooks/useAxiosGet';
@@ -17,8 +17,10 @@ type CardParams = {
 function SingleCard(){
   const { id }  = useParams<CardParams>();
   const url = `https://api.nasa.gov/planetary/apod?date=${id}&api_key=zeJyIpkuec7yalITA6AKk4Bw0ihw6WrnpfSAUcAp`
+  
   let response = useAxiosGet(url)
   let content = null
+
   if(response.error) {
     content =
       <ErrorStateCard/>
@@ -33,7 +35,7 @@ function SingleCard(){
 
   if (response.data) {
     content = 
-    <ImageCard 
+      <ImageCard 
         title={response.data["title"]}
         date={response.data["date"]}
         imageUrl={response.data["url"]}
@@ -50,7 +52,6 @@ function SingleCard(){
         {content}
       </div>
     </div>
-    
   )
 }
 
