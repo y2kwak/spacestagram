@@ -17,10 +17,10 @@ type ImageCardProps = {
 };
 
 const copySingleImgUrl = (date: string) => {
-  if(window.location.pathname.includes(`/image/${date}`)) {
+  if(window.location.hash.includes(`image`)) {
     navigator.clipboard.writeText(window.location.href)
   } else {
-    navigator.clipboard.writeText(window.location.href + `/image/${date}`)
+    navigator.clipboard.writeText(window.location.href + `image/${date}`)
   }
 }
 
@@ -94,7 +94,7 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
                 {isLiked ? "Liked" : "Like"}
               </Button>
               {!props.isSingleCard && 
-                <Link to={`/spacestagram/image/${props.date}`}>
+                <Link to={`/image/${props.date}`}>
                   <Button>
                     View more
                   </Button>

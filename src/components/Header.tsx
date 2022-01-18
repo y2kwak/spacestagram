@@ -19,7 +19,7 @@ const Header: React.FC<HeaderProps>= (props) => {
   const [datePickerDate, setDatePickerDate] = React.useState<Date>(new Date());
 
   return (
-    <div className="flex header-container p-xxl">
+    <div className="flex header-container">
       {props.isHomeHeader ? (
         <div className="flex align-center">
           <img className="logo"src={logo} alt="shopify-logo"/>
@@ -30,17 +30,16 @@ const Header: React.FC<HeaderProps>= (props) => {
         </div>
       ) : (
         <div>
-          <Button 
-            icon={ChevronLeftMinor}
-            onClick={() => 
-              {
-                if (window.history.length > 1) window.history.back()
-                else window.history.go(-1)
-              }
-              }
-          >
-            Back
-          </Button>
+          {window.history.length == 2 ? (
+            <Link to="/">
+              <Button icon={ChevronLeftMinor}>
+                Back
+              </Button>
+            </Link>
+          ) : (
+            <Button icon={ChevronLeftMinor} onClick={() => window.history.back()}>
+              Back
+            </Button>)}
         </div>
       )}
       
@@ -50,7 +49,7 @@ const Header: React.FC<HeaderProps>= (props) => {
           onChange={(date: Date) => setDatePickerDate(date)}
           shouldCloseOnSelect={false}
         />
-        <Link to={`/spacestagram/image/${moment(datePickerDate).format("YYYY-MM-DD")}`}>
+        <Link to={`/image/${moment(datePickerDate).format("YYYY-MM-DD")}`}>
           <div className="ml-m">
             <Button primary size="slim">Go!</Button>
           </div>

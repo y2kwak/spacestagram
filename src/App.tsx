@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
   Switch
 } from 'react-router-dom';
@@ -9,7 +9,6 @@ import { AppProvider, Frame } from '@shopify/polaris';
 
 import Home from './views/Home';
 import SingleCard from './views/SingleCard';
-import './App.css';
 
 function App() {
   return (
@@ -17,10 +16,10 @@ function App() {
       <Frame>
         <Router>
           <Switch>
-            <Route exact path="/spacestagram">
+            <Route exact path="/">
               <Home/>
             </Route>
-            <Route exact path ="/spacestagram/image/:id">
+            <Route exact path ="/image/:id">
               <SingleCard/>
             </Route>
           </Switch>
