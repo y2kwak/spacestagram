@@ -16,11 +16,11 @@ Users can:
 
 ## Running the code
 
-You can view the hosted application [here](https://y2kwak.github.io/spacestagram/#/). But if you wish to run the code locally:
+You can view the hosted application [here](https://y2kwak.github.io/spacestagram/). But if you wish to run the code locally:
 
 - First clone the repository and install the dependencies by running `npm install` in the project root directory.
 - Then run `npm start` in the project root directory.
-- Open [http://localhost:3000/spacestagram](http://localhost:3000/spacestagram) to view it in the browser.
+- Open [http://localhost:3000/spacestagram/](http://localhost:3000/spacestagram/) to view it in the browser.
 
 ## Tech Stack
 
