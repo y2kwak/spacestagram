@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
-import { Button, Card, EmptyState, Page, Spinner } from '@shopify/polaris';
-import {
-  ChevronLeftMinor
-} from '@shopify/polaris-icons';
+import { Page, Spinner } from '@shopify/polaris';
+
 import ImageCard from '../components/Card';
 import { useAxiosGet } from '../hooks/useAxiosGet';
 import Header from '../components/Header';
+import ErrorStateCard from '../components/ErrorStateCard';
 
 import './views.css';
 import '../styles.css'
@@ -22,14 +21,7 @@ function SingleCard(){
   let content = null
   if(response.error) {
     content =
-      <Card sectioned>
-        <EmptyState
-          heading="Sorry"
-          image="https://cdn.shopify.com/s/files/1/0262/4071/2726/files/emptystate-files.png"
-        >
-        <p>There was an error.</p>
-        </EmptyState>
-      </Card>
+      <ErrorStateCard/>
   } 
 
   if (response.loading) {
@@ -52,11 +44,11 @@ function SingleCard(){
   }
   
   return (
-    <div>
+    <div className="mb-xxl">
       <Header isHomeHeader={false}/>
-      <Page>
+      <div className="page-container">
         {content}
-      </Page>
+      </div>
     </div>
     
   )

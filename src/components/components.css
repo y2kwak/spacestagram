@@ -1,4 +1,4 @@
-.cardTextArea {
+.card-text-area {
   margin: 16px 0;
 }
 
@@ -6,7 +6,12 @@ a {
   text-decoration: none;
 }
 
-.media {
-  width: 100%;
-  min-height: 300px;
+.logo {
+  height: 4rem;
+}
+
+.header-container {
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 4rem;
 }

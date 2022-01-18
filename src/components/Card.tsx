@@ -1,9 +1,9 @@
 import * as React from 'react';
+import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { Button, ButtonGroup, Card, Stack, TextContainer, Toast } from '@shopify/polaris';
 import { ThumbsUpMajor, ThumbsUpMinor, LinkMinor } from '@shopify/polaris-icons';
 
-import moment from 'moment';
 import './components.css';
 import '../styles.css'
 
@@ -20,7 +20,7 @@ const copySingleImgUrl = (date: string) => {
   if(window.location.pathname.includes(`/image/${date}`)) {
     navigator.clipboard.writeText(window.location.href)
   } else {
-    navigator.clipboard.writeText(window.location.href + `image/${date}`)
+    navigator.clipboard.writeText(window.location.href + `/image/${date}`)
   }
 }
 
@@ -68,7 +68,7 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
         ) : (
           <iframe title={props.title} width="100%" height="315px" src={props.imageUrl}/>
         )}
-        {props.isSingleCard && <div className="cardTextArea">
+        {props.isSingleCard && <div className="card-text-area">
           <TextContainer>
             <p>{props.description}</p>
             

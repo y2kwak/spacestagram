@@ -6,12 +6,12 @@
   margin-left: 1rem;
 }
 
-.p-m {
-  padding: 1rem;
+.mb-xxl {
+  margin-bottom: 4rem;
 }
 
-.p-xl {
-  padding: 2rem;
+.p-xxl {
+  padding: 4rem;
 }
 
 .header {
@@ -22,6 +22,11 @@
   align-items: center;
 }
 
-.flex-wrap {
-  flex-wrap: wrap;
+.flex {
+  display: flex;
+}
+
+.center {
+  justify-content: center;
+  vertical-align: middle;
 }

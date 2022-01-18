@@ -1,7 +1,6 @@
 import * as React from 'react';
 import axios from 'axios';
 
-
 export function useAxiosGet(url: string){
   const [request, setRequest] = React.useState({
     loading: false,

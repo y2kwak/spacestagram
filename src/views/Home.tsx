@@ -2,11 +2,12 @@ import * as React from 'react';
 import axios from 'axios';
 import moment from 'moment';
 
-import { Button, Page, Spinner } from '@shopify/polaris';
+import { Button, Spinner } from '@shopify/polaris';
 import { PlusMinor } from '@shopify/polaris-icons';
 
 import ImageCard from '../components/Card';
 import Header from '../components/Header';
+import ErrorStateCard from '../components/ErrorStateCard';
 import './views.css';
 
 const Home = () => {
@@ -57,10 +58,17 @@ const Home = () => {
       });
   }
 
+  if (requestStatus.error) {
+    return (
+      <div className="page-container">
+        <ErrorStateCard/>
+      </div>
+    )
+  }
   return (
-    <div>
+    <div className="mb-xxl">
       <Header isHomeHeader={true}/>
-      <div className="pageContainer">
+      <div className="page-container">
         {imagesList.map((item) => {
           return(
             <ImageCard 
@@ -80,6 +88,7 @@ const Home = () => {
             <Spinner accessibilityLabel="SpinnerExample"/>
           </div>
         }
+
         {!requestStatus.loading && 
           <div className="header">
             <Button 

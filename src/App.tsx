@@ -17,7 +17,7 @@ function App() {
       <Frame>
         <Router>
           <Switch>
-            <Route exact path="/spacestagram/">
+            <Route exact path="/spacestagram">
               <Home/>
             </Route>
             <Route exact path ="/spacestagram/image/:id">
