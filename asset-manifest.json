@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/spacestagram/static/css/main.545299e0.css",
-    "main.js": "/spacestagram/static/js/main.95eda86c.js",
+    "main.js": "/spacestagram/static/js/main.68ad4860.js",
     "static/js/787.2d368a1b.chunk.js": "/spacestagram/static/js/787.2d368a1b.chunk.js",
     "static/media/shopify-logo.svg": "/spacestagram/static/media/shopify-logo.6d9b56d8763cd7f6b41a6b03da5c7100.svg",
     "index.html": "/spacestagram/index.html",
     "main.545299e0.css.map": "/spacestagram/static/css/main.545299e0.css.map",
-    "main.95eda86c.js.map": "/spacestagram/static/js/main.95eda86c.js.map",
+    "main.68ad4860.js.map": "/spacestagram/static/js/main.68ad4860.js.map",
     "787.2d368a1b.chunk.js.map": "/spacestagram/static/js/787.2d368a1b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.545299e0.css",
-    "static/js/main.95eda86c.js"
+    "static/js/main.68ad4860.js"
   ]
 }
