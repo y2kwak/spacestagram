@@ -2,18 +2,15 @@ import * as React from 'react';
 import axios from 'axios';
 import moment from 'moment';
 
-import { Link } from 'react-router-dom';
-import { Button, DisplayText, Page, Spinner } from '@shopify/polaris';
+import { Button, Page, Spinner } from '@shopify/polaris';
 import { PlusMinor } from '@shopify/polaris-icons';
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 
 import ImageCard from '../components/Card';
+import Header from '../components/Header';
 import './views.css';
 
 const Home = () => {
   // States
-  const [datePickerDate, setDatePickerDate] = React.useState<Date>(new Date());
   const [requestStatus, setRequestStatus] = React.useState({
     loading: false,
     error: false,
@@ -61,59 +58,43 @@ const Home = () => {
   }
 
   return (
-    <Page>
-      <div className="flex space-between header">
-        <div>
-          <DisplayText size="large">Spacestagram</DisplayText>
-          <p>Brought to you by NASA's Photo of the Day (APOD) API!</p>
-        </div>
-        <div className="datePicker">
-          <DatePicker
-            selected={datePickerDate}
-            onChange={(date: Date) => setDatePickerDate(date)}
-            shouldCloseOnSelect={false}
-          />
-          <Link to={`/spacestagram/image/${moment(datePickerDate).format("YYYY-MM-DD")}`}>
-            <div className="datePickerBtn">
-              <Button primary size="slim">Go!</Button>
-            </div>
-          </Link>
-        </div>
-      </div>
-      
-      {imagesList.map((item) => {
-        return(
-          <ImageCard 
-            key={item.date}
-            title={item.title}
-            date={item.date}
-            imageUrl={item.url}
-            description={item.explanation}
-            credit={item.copyright}
-            isSingleCard={false}
-          />
+    <div>
+      <Header isHomeHeader={true}/>
+      <div className="pageContainer">
+        {imagesList.map((item) => {
+          return(
+            <ImageCard 
+              key={item.date}
+              title={item.title}
+              date={item.date}
+              imageUrl={item.url}
+              description={item.explanation}
+              credit={item.copyright}
+              isSingleCard={false}
+            />
+          )}
         )}
-      )}
-      
-      {requestStatus.loading  &&
-        <div className="center flex header">
-          <Spinner accessibilityLabel="SpinnerExample"/>
-        </div>
-      }
-      {!requestStatus.loading && 
-        <div className="header">
-          <Button 
-            fullWidth 
-            icon={PlusMinor} 
-            onClick={() => {
-              loadMoreImages()
-            }}
-          >
-            Load more
-          </Button>
-        </div>
-      }
-    </Page>
+
+        {requestStatus.loading  &&
+          <div className="center flex header">
+            <Spinner accessibilityLabel="SpinnerExample"/>
+          </div>
+        }
+        {!requestStatus.loading && 
+          <div className="header">
+            <Button 
+              fullWidth 
+              icon={PlusMinor} 
+              onClick={() => {
+                loadMoreImages()
+              }}
+            >
+              Load more
+            </Button>
+          </div>
+        }
+      </div>
+    </div>
   )
 }
 

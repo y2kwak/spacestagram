@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { Button, ButtonGroup, Card, MediaCard, Stack, TextContainer, Toast } from '@shopify/polaris';
+import { Link } from 'react-router-dom';
+import { Button, ButtonGroup, Card, Stack, TextContainer, Toast } from '@shopify/polaris';
 import { ThumbsUpMajor, ThumbsUpMinor, LinkMinor } from '@shopify/polaris-icons';
 
 import moment from 'moment';
@@ -8,12 +8,12 @@ import './components.css';
 import '../styles.css'
 
 type ImageCardProps = {
-    title: string,
-    date: string,
-    imageUrl: string,
-    description: string,
-    credit?: string,
-    isSingleCard: boolean
+  title: string,
+  date: string,
+  imageUrl: string,
+  description: string,
+  credit?: string,
+  isSingleCard: boolean
 };
 
 const copySingleImgUrl = (date: string) => {
@@ -30,7 +30,6 @@ const isImage = (imageUrl: string) => {
 }
 
 const ImageCard: React.FC<ImageCardProps> = (props) => {
-  let history = useHistory()
   const [isLiked, setIsLiked] = React.useState<boolean>(false)
   const [showToast, setShowToast] = React.useState<boolean>(false);
 

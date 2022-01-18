@@ -6,6 +6,7 @@ import {
 } from '@shopify/polaris-icons';
 import ImageCard from '../components/Card';
 import { useAxiosGet } from '../hooks/useAxiosGet';
+import Header from '../components/Header';
 
 import './views.css';
 import '../styles.css'
@@ -51,17 +52,13 @@ function SingleCard(){
   }
   
   return (
-    <Page>
-      <div className="flex align-center header">
-        <Button 
-          icon={ChevronLeftMinor}
-          onClick={() => window.history.back()}
-        >
-          Back
-        </Button>
-      </div>
-      {content}
-    </Page>
+    <div>
+      <Header isHomeHeader={false}/>
+      <Page>
+        {content}
+      </Page>
+    </div>
+    
   )
 }
 

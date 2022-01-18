@@ -7,10 +7,6 @@
   display: flex;
 }
 
-.header {
-  margin: 2.25rem 0;
-}
-
 .space-between {
   justify-content: space-between;
 }
@@ -26,4 +22,11 @@
 
 .todayHeader {
   margin: 1rem 0;
+}
+
+.pageContainer {
+  padding: 2rem;
+  display: block;
+  margin: 0 auto;
+  max-width: 90rem;
 }

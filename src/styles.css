@@ -6,6 +6,22 @@
   margin-left: 1rem;
 }
 
+.p-m {
+  padding: 1rem;
+}
+
+.p-xl {
+  padding: 2rem;
+}
+
+.header {
+  margin: 2.25rem 0;
+}
+
 .align-center {
   align-items: center;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
 }
