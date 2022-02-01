@@ -31,7 +31,7 @@ const Header: React.FC<HeaderProps>= (props) => {
       ) : (
         <div>
           {window.history.length == 2 ? (
-            // Go to home if there's no history
+            // Button to Home if there's no history
             <Link to="/">
               <Button icon={HomeMajor}>
                 Home

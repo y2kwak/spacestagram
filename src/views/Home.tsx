@@ -7,7 +7,7 @@ import { PlusMinor } from '@shopify/polaris-icons';
 
 import ImageCard from '../components/Card';
 import Header from '../components/Header';
-import ErrorStateCard from '../components/ErrorStateCard';
+import ErrorStateCard from '../components/ErrorStateCard'
 import './views.css';
 
 const Home = () => {
@@ -52,6 +52,7 @@ const Home = () => {
       setApiStartDate((prevDate) => moment(prevDate).subtract(6, "d").format("YYYY-MM-DD"))
     })
     .catch((e) => {
+      // TO DO: throw error message
       setRequestStatus({
         loading: false,
         error: true,

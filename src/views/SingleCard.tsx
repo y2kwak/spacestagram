@@ -8,7 +8,7 @@ import Header from '../components/Header';
 import ErrorStateCard from '../components/ErrorStateCard';
 
 import './views.css';
-import '../styles.css'
+import '../styles.css';
 
 type CardParams = {
   id: string
@@ -18,7 +18,7 @@ function SingleCard(){
   const { id }  = useParams<CardParams>();
   const url = `https://api.nasa.gov/planetary/apod?date=${id}&api_key=zeJyIpkuec7yalITA6AKk4Bw0ihw6WrnpfSAUcAp`
   
-  let response = useAxiosGet(url)
+  const response = useAxiosGet(url)
   let content = null
 
   if(response.error) {
