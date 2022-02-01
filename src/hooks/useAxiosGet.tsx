@@ -9,24 +9,24 @@ export function useAxiosGet(url: string){
   })  
   React.useEffect(() => {
     setRequest({
-        loading: true,
-        data: null,
-        error: false,
+      loading: true,
+      data: null,
+      error: false,
     })
     axios.get(url)
     .then(response => {
-        setRequest({
-            loading:false,
-            data: response.data,
-            error: false,
-        })
+      setRequest({
+          loading:false,
+          data: response.data,
+          error: false,
+      })
     })
     .catch(error => {
-        setRequest({
-            loading:false,
-            data: null,
-            error: true,
-        })
+      setRequest({
+          loading:false,
+          data: null,
+          error: true,
+      })
     })
   }, [url])
     
